@@ -1,11 +1,33 @@
 import { useLoaderData } from "react-router-dom";
 import Toy from "./Toy";
+import { useEffect, useState } from "react";
 
 const AllToys = () => {
-  const toys = useLoaderData();
+//   const toysData = useLoaderData();
+  const [toys, setToys] = useState([])
+  const [searchText, setSearchText] = useState('')
+
+useEffect(() => {
+    fetch('http://localhost:5000/toys')
+    .then(res=> res.json())
+    .then(data =>setToys(data))
+},[])
+
+  const handleSearch = (event) => {
+    event.preventDefault()
+    fetch(`http://localhost:5000/toys/${searchText}`)
+    .then(res=> res.json())
+    .then(data =>setToys(data))
+    event.target.reset()
+  }
 
   return (
     <div className="overflow-x-auto w-full">
+        <form onSubmit={handleSearch} className="mt-8 mb-8 flex justify-center items-center">
+            <input onChange={(e) => setSearchText(e.target.value)} className="p-2 w-[30%]" type="text" placeholder="Search Here" />
+            
+            <input className="btn" type="submit" value="Search" />
+        </form>
       <table className="table w-full">
         <thead>
           <tr>

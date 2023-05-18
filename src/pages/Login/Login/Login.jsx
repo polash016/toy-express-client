@@ -2,6 +2,7 @@ import { useContext } from "react";
 import {  FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import img from '../../../../public/image/login.jpg'
 
 const Login = () => {
     const {googleLogin} = useContext(AuthContext)
@@ -16,8 +17,13 @@ const Login = () => {
         })
     }
   return (
-    <form className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row w-full">
+    <form className="hero min-h-screen bg-base-200" style={{
+        backgroundImage: `url(${img})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }}>
+      <div className="hero-content flex-col lg:flex-row w-full" >
         <div className="text-center lg:text-left w-[50%]">
           <h1 className="text-5xl font-bold">Login now!</h1>
           <p className="py-6">
@@ -26,7 +32,7 @@ const Login = () => {
             a id nisi.
           </p>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card bg-opacity-50 flex-shrink-0 w-full max-w-sm shadow-2xl ">
           <div className="card-body">
             <div className="form-control">
               <label className="label">
