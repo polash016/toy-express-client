@@ -1,9 +1,22 @@
-import { FaBeer, FaGoogle } from "react-icons/fa";
+import { useContext } from "react";
+import {  FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Login = () => {
+    const {googleLogin} = useContext(AuthContext)
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+        .then(result => {
+            console.log(result)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <form className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row w-full">
         <div className="text-center lg:text-left w-[50%]">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -48,13 +61,13 @@ const Login = () => {
             </div>
             <div className="divider">OR</div>
 
-            <button className="btn btn-circle btn-outline mx-auto">
+            <button onClick={handleGoogleLogin} className="btn btn-circle btn-outline mx-auto">
               <FaGoogle />
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
