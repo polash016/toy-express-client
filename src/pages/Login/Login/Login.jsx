@@ -5,19 +5,32 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import img from '../../../../public/image/login.jpg'
 
 const Login = () => {
-    const {googleLogin} = useContext(AuthContext)
+    const {googleLogin, emailLogin} = useContext(AuthContext)
 
     const handleGoogleLogin = () => {
         googleLogin()
         .then(result => {
-            console.log(result)
+            console.log(result.user)
         })
         .catch(error => {
             console.log(error)
         })
     }
+    const handleEmailLogin = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        emailLogin(email, password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
   return (
-    <form className="hero min-h-screen bg-base-200" style={{
+    <form onSubmit={handleEmailLogin} className="hero min-h-screen bg-base-200" style={{
         backgroundImage: `url(${img})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -40,6 +53,7 @@ const Login = () => {
               </label>
               <input
                 type="text"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -50,6 +64,7 @@ const Login = () => {
               </label>
               <input
                 type="text"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
               />
@@ -60,7 +75,8 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              {/* <button className="btn btn-primary">Login</button> */}
+              <input className="btn btn-primary" type="submit" value="Login" />
             </div>
             <div>
                 <p>New Here? <Link to='/register'>Register</Link></p>

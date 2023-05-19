@@ -9,6 +9,8 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
+
+
   const googleLogin = () => {
     setLoading(true)
     const googleProvider = new GoogleAuthProvider();
