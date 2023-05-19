@@ -8,7 +8,7 @@ const NavBar = () => {
     const handleLogout = () => {
         logOut()
         .then()
-        .then(error => {
+        .catch(error => {
             console.log(error);
         })
     }
@@ -82,7 +82,7 @@ const NavBar = () => {
             </div>
           </div>
         }
-        {user ? <Link to='/login'><button onClick={handleLogout} className="btn">Logout</button></Link>:
+        {user ? <Link><button onClick={handleLogout} className="btn">Logout</button></Link>:
         <Link to='/login'><button className="btn">Login</button></Link>}
       </div>
     </div>

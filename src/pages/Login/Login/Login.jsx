@@ -1,16 +1,20 @@
 import { useContext } from "react";
 import {  FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import img from '../../../../public/image/login.jpg'
 
 const Login = () => {
-    const {googleLogin, emailLogin} = useContext(AuthContext)
+    const {googleLogin, emailLogin} = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const handleGoogleLogin = () => {
         googleLogin()
         .then(result => {
             console.log(result.user)
+            navigate(from, {replace: true})
         })
         .catch(error => {
             console.log(error)
@@ -23,7 +27,9 @@ const Login = () => {
         const password = form.password.value;
         emailLogin(email, password)
         .then(result => {
+
             console.log(result.user)
+            navigate(from, {replace: true})
         })
         .catch(err => {
             console.log(err)
