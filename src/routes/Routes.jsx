@@ -24,7 +24,7 @@ import Registration from "../pages/Login/Registration/Registration";
             element: <Login></Login>
         },
         {
-            path: '/registration',
+            path: '/register',
             element: <Registration></Registration>
         }
       ],
