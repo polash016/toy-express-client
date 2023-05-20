@@ -1,101 +1,107 @@
 import { useContext } from "react";
-import {  FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
-import img from '../../../../public/image/login.jpg'
+import img from "../../../../public/image/login.jpg";
+import { Button, Card, Checkbox, Input, Typography } from "@material-tailwind/react";
 
 const Login = () => {
-    const {googleLogin, emailLogin} = useContext(AuthContext);
-    const navigate = useNavigate()
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/'
+  const { googleLogin, emailLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-    const handleGoogleLogin = () => {
-        googleLogin()
-        .then(result => {
-            console.log(result.user)
-            navigate(from, {replace: true})
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
-    const handleEmailLogin = (event) => {
-        event.preventDefault()
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        emailLogin(email, password)
-        .then(result => {
-
-            console.log(result.user)
-            navigate(from, {replace: true})
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleEmailLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    emailLogin(email, password)
+      .then((result) => {
+        console.log(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <form onSubmit={handleEmailLogin} className="hero min-h-screen bg-base-200" style={{
+    <Card
+      style={{
         backgroundImage: `url(${img})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat"
-      }}>
-      <div className="hero-content flex-col lg:flex-row w-full" >
-        <div className="text-center lg:text-left w-[50%]">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-        </div>
-        <div className="card bg-opacity-50 flex-shrink-0 w-full max-w-sm shadow-2xl ">
-          <div className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="text"
-                name="email"
-                placeholder="email"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="text"
-                name="password"
-                placeholder="password"
-                className="input input-bordered"
-              />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-              {/* <button className="btn btn-primary">Login</button> */}
-              <input className="btn btn-primary" type="submit" value="Login" />
-            </div>
-            <div>
-                <p>New Here? <Link to='/register'>Register</Link></p>
-            </div>
-            <div className="divider">OR</div>
-
-            <button onClick={handleGoogleLogin} className="btn btn-circle btn-outline mx-auto">
-              <FaGoogle />
-            </button>
-          </div>
-        </div>
+        backgroundRepeat: "no-repeat",
+      }}
+      color="transparent"
+      shadow={false}
+    >
+      <div className="mx-auto h-full">
+        <Typography variant="h4" color="white">
+          Sign Up
+        </Typography>
+        <Typography color="white" className="mt-1 font-normal">
+          Enter your details to register.
+        </Typography>
       </div>
-    </form>
+      <form
+        onSubmit={handleEmailLogin}
+        className="mt-8 mb-2 w-80 max-w-screen-lg mx-auto sm:w-96"
+      >
+        <div className="mb-4 flex flex-col gap-6">
+          <Input name="email" size="lg" label="Email" />
+          <Input name="password" type="password" size="lg" label="Password" />
+        </div>
+        <Checkbox
+          label={
+            <Typography
+              variant="small"
+              color="gray"
+              className="flex items-center font-normal"
+            >
+              I agree the
+              <a
+                href="#"
+                className="font-medium transition-colors hover:text-blue-500"
+              >
+                &nbsp;Terms and Conditions
+              </a>
+            </Typography>
+          }
+          containerProps={{ className: "-ml-2.5" }}
+        />
+        <Button type="submit" className="mt-6" fullWidth>
+          Login
+        </Button>
+        <Typography color="white" className="mt-4 text-center font-normal">
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+          >
+            Sign In
+          </Link>
+        </Typography>
+        <div className="divider">OR</div>
+
+        <button
+          onClick={handleGoogleLogin}
+          className="btn btn-circle btn-outline mx-auto"
+        >
+          <FaGoogle />
+        </button>
+      </form>
+    </Card>
   );
 };
 

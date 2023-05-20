@@ -72,7 +72,6 @@ const AddToy = () => {
                   <div className="my-4 flex items-center gap-4">
                     <Input
                       label="Name"
-                      maxLength={5}
                       containerProps={{ className: "min-w-[72px]" }}
                       {...register("name")}
                     />
@@ -81,7 +80,6 @@ const AddToy = () => {
                       className="p-3 rounded-lg border-solid border-slate-300 w-72"  
                       label="Category"
                       {...register("sub_category")}
-                      maxLength={5}
                     >
                       <option value="Sports">Sports</option>
                       <option value="Truck">Truck</option>
