@@ -10,12 +10,12 @@ const MyToys = () => {
         fetch(`http://localhost:5000/myToys/${user.email}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            setToys(data)
         })
     },[])
     return (
         <div>
-            
+            {toys.map(toy => <p key={toy._id}>{toy.name}</p>)}
         </div>
     );
 };

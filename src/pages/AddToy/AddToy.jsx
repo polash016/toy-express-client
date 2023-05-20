@@ -6,9 +6,7 @@ import {
   Input,
   Button,
   Tabs,
-  TabPanel,
-  Option,
-  Select,
+  TabPanel
 } from "@material-tailwind/react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -66,7 +64,6 @@ const AddToy = () => {
                 <div>
                   <div className="my-6">
                     <Input
-                      label="Seller Email"
                       value={user.email}
                       {...register("seller_email", { required: true })}
                     />
@@ -108,7 +105,8 @@ const AddToy = () => {
                   </div>
                 </div>
                 {/* <Button size="lg">Pay Now</Button> */}
-                <input className="btn" type="submit" value="Submit" />
+                {/* <input className="btn" type="submit" value="Submit" /> */}
+                <Button size="lg" type="submit">Submit</Button>
               </form>
             </TabPanel>
           </Tabs>
