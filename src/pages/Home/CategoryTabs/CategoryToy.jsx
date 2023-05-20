@@ -23,14 +23,15 @@ const CategoryToy = ({ category, toys }) => {
             <Typography variant="h5" color="blue-gray" className="mb-2">
               {toy.name}
             </Typography>
+            <Typography className='mb-2'>
+            <span>Price:</span> ${toy.price}
+            </Typography>
             <Typography>
-              The place is close to Barceloneta Beach and bus stop just 2 min by
-              walk and near to &quot;Naviglio&quot; where you can enjoy the main
-              night life in Barcelona.
+              {toy.rating}
             </Typography>
           </CardBody>
           <CardFooter className="pt-0">
-            <Button>Read More</Button>
+            <Button>View Details</Button>
           </CardFooter>
         </Card>
       ))}
