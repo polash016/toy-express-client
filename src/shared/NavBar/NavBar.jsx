@@ -9,6 +9,7 @@ import {
   IconButton,
   Avatar,
 } from "@material-tailwind/react";
+import logo from '../../../public/image/logo.png'
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -30,7 +31,7 @@ const NavBar = () => {
   }, []);
 
   const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className=" flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
         variant="small"
@@ -51,7 +52,7 @@ const NavBar = () => {
           All Toys
         </Link>
       </Typography>
-      <Typography
+      { user && <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -60,15 +61,15 @@ const NavBar = () => {
         <Link className="flex items-center" to="/myToys">
           My Toys
         </Link>
-      </Typography>
-      <Typography
+      </Typography>}
+     { user && <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
         <Link to="/addToys">Add A Toy</Link>
-      </Typography>
+      </Typography>}
       <Typography
         as="li"
         variant="small"
@@ -82,21 +83,21 @@ const NavBar = () => {
 
   return (
     <>
-      <Navbar className="sticky bg-opacity-100 inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
+      <Navbar className="sticky bg-opacity-50 bg-transparent inset-0 z-10 h-min max-w-full   px-4 ">
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
-            href="#"
-            className="mr-4 cursor-pointer py-1.5 font-medium"
+            href="/"
+            className=" cursor-pointer"
           >
-            Material Tailwind
+            <img src={logo} alt="" />
           </Typography>
           <div className="flex items-center gap-4">
-            <div className="mr-1 hidden lg:block">{navList}</div>
+            <div className="mr-1 hidden lg:block w-full">{navList}</div>
             {/* <Avatar src="/img/face-2.jpg" alt="avatar" /> */}
             {user && (
               <div className="ml-4">
-                <Avatar title={user?.email} src={user?.photoURL} />
+                <Avatar className="h-10 w-14" title={user?.email} src={user?.photoURL} />
               </div>
             )}
             {user ? (
