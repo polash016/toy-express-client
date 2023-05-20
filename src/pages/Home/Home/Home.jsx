@@ -1,11 +1,13 @@
 import CategoryTabs from "../CategoryTabs/CategoryTabs";
-import SellerSection from "../ExtraSection/ExtraSection";
+import ExtraSection from "../ExtraSection/ExtraSection";
+import GallerySection from "../GallerySection/GallerySection";
 
 const Home = () => {
     return (
         <div>
             <CategoryTabs></CategoryTabs>
-            <SellerSection></SellerSection>
+            <GallerySection></GallerySection>
+            <ExtraSection></ExtraSection>
         </div>
     );
 };
