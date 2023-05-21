@@ -4,6 +4,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Rating,
   Typography,
 } from "@material-tailwind/react";
 
@@ -27,7 +28,7 @@ const CategoryToy = ({ category, toys }) => {
             <span>Price:</span> ${toy.price}
             </Typography>
             <Typography>
-              {toy.rating}
+              <Rating value={toy.rating} readonly />
             </Typography>
           </CardBody>
           <CardFooter className="pt-0">
