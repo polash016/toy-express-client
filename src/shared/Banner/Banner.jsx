@@ -32,7 +32,7 @@ const Banner = () => {
             <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
               We offer a wide range of toy cars, including miniature models of
               popular car brands, racing cars, vintage cars, and more. Whether
-              you're a car enthusiast or looking for the perfect gift for a
+              you are a car enthusiast or looking for the perfect gift for a
               child, our shop has something for everyone.
             </p>
             <div className="flex items-center">

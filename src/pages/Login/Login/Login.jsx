@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaGooglePlusG } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
-import img from "../../../../public/image/login.jpg";
+import img from "../../../../src/image/login.jpg";
+import img2 from "../../../../src/image/regular1.jpg";
 import { Button, Card, Checkbox, Input, Typography } from "@material-tailwind/react";
 
 const Login = () => {
@@ -38,7 +39,7 @@ const Login = () => {
   return (
     <Card
       style={{
-        backgroundImage: `url(${img})`,
+        backgroundImage: `url(${img2})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -46,13 +47,11 @@ const Login = () => {
       color="transparent"
       shadow={false}
     >
-      <div className="mx-auto h-full">
-        <Typography variant="h4" color="white">
-          Sign Up
+      <div className="mx-auto mt-6 h-full">
+        <Typography variant="h4">
+          Login Here
         </Typography>
-        <Typography color="white" className="mt-1 font-normal">
-          Enter your details to register.
-        </Typography>
+        
       </div>
       <form
         onSubmit={handleEmailLogin}
@@ -83,23 +82,26 @@ const Login = () => {
         <Button type="submit" className="mt-6" fullWidth>
           Login
         </Button>
-        <Typography color="white" className="mt-4 text-center font-normal">
+        <Typography className="mt-4 text-center font-semibold">
           Already have an account?{" "}
           <Link
-            to="/login"
-            className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+            to="/register"
+            className="font-semibold text-blue-500 transition-colors hover:text-blue-700"
           >
-            Sign In
+            Register Here
           </Link>
         </Typography>
-        <div className="divider">OR</div>
+        <div className="divider ml-40">OR</div>
 
+        <div className="w-full ml-40">
         <button
           onClick={handleGoogleLogin}
-          className="btn btn-circle btn-outline mx-auto"
+          className="btn btn-circle btn-outline"
+          title="Login With Google"
         >
-          <FaGoogle />
+          <FaGooglePlusG className="w-10 h-8" />
         </button>
+        </div>
       </form>
     </Card>
   );

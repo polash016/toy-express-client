@@ -1,4 +1,8 @@
-
+import { Button } from '@material-tailwind/react';
+import photo from '../../../../src/image/new1.jpg';
+import photo1 from '../../../../src/image/new2.jpg';
+import photo2 from '../../../../src/image/new3.jpg';
+import photo3 from '../../../../src/image/pexels-karen-laårk-boshoff-8281139.jpg';
 
 const ExtraSection = () => {
     return (
@@ -45,32 +49,32 @@ const ExtraSection = () => {
         <div className="grid max-w-screen-lg gap-8 row-gap-5 mb-8 sm:grid-cols-2 lg:grid-cols-4 sm:mx-auto">
           <img
             className="object-cover w-full h-56 rounded shadow-lg"
-            src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+            src={photo3}
             alt=""
           />
           <img
             className="object-cover w-full h-56 rounded shadow-lg"
-            src="https://images.pexels.com/photos/3182746/pexels-photo-3182746.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+            src={photo2}
             alt=""
           />
           <img
             className="object-cover w-full h-56 rounded shadow-lg"
-            src="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500"
+            src={photo1}
             alt=""
           />
           <img
             className="object-cover w-full h-56 rounded shadow-lg"
-            src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+            src={photo}
             alt=""
           />
         </div>
         <div className="flex items-center sm:justify-center">
-          <a
+          <Button
             href="/"
-            className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            className="inline-flex items-center justify-center  px-6 mr-8 font-medium tracking-wide text-white transition duration-200 rounded shadow-md hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
           >
             Sign up
-          </a>
+          </Button>
           <a
             href="/"
             aria-label=""

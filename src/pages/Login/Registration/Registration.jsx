@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import img from "../../../../public/image/register.jpg";
+import img from "../../../../src/image/new77.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import {
@@ -40,12 +40,9 @@ const Registration = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }} color="transparent" shadow={false}>
-      <div className="mx-auto">
-      <Typography variant="h4" color="white">
+      <div className="mx-auto mt-6">
+      <Typography variant="h4" color="">
         Sign Up
-      </Typography>
-      <Typography color="white" className="mt-1 font-normal">
-        Enter your details to register.
       </Typography>
       </div>
       <form onSubmit={handleRegister} className="mt-8 mb-2 w-80 max-w-screen-lg mx-auto sm:w-96">
@@ -78,7 +75,7 @@ const Registration = () => {
         <Button type="submit" className="mt-6" fullWidth>
           Register
         </Button>
-        <Typography color="white" className="mt-4 text-center font-normal">
+        <Typography className="mt-4 text-center font-normal">
           Already have an account?{" "}
           <Link
             to='/login'

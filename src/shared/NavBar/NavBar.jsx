@@ -9,7 +9,7 @@ import {
   IconButton,
   Avatar,
 } from "@material-tailwind/react";
-import logo from '../../../public/image/logo.png'
+import logo from '../../../src/image/logo.png'
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
