@@ -7,6 +7,7 @@ import {
   Rating,
   Typography,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const CategoryToy = ({ category, toys }) => {
   const categoryToys = toys.filter((toy) => toy.sub_category === category);
@@ -28,11 +29,11 @@ const CategoryToy = ({ category, toys }) => {
             <span>Price:</span> ${toy.price}
             </Typography>
             <Typography>
-              <Rating value={toy.rating} readonly />
+              {toy.rating}
             </Typography>
           </CardBody>
           <CardFooter className="pt-0">
-            <Button>View Details</Button>
+            <Link to={`toys/${toy._id}`}><Button>View Details</Button></Link>
           </CardFooter>
         </Card>
       ))}

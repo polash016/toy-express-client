@@ -1,53 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import {
-  Button,
-  Dialog,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Input,
-  Checkbox,
-  Avatar,
-  Tooltip,
-} from "@material-tailwind/react";
 
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Avatar, Button, Card, CardBody, Tooltip, Typography } from "@material-tailwind/react";
+import Swal from "sweetalert2";
 
 const TABLE_HEAD = ["Image", "Name", "Price", "Rating", "Update", "Delete"];
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
   const { user } = useContext(AuthContext);
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen((cur) => !cur);
-  const handleUpdate = (e) => {
-    e.preventDefault()
-    const form = e.target;
-    const name = form.name.value;
-    const quantity = form.quantity.value;
-    const price = form.price.value;
-    const id = form.id.value;
-    const doc = {name, quantity, price}
-    console.log(doc)
-    fetch(`http://localhost:5000/update/${id}`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/jason'
-      },
-      body: JSON.stringify(doc)
-    })
-    .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if(data.modifiedCount > 0){
-          alert('success')
-        }
-      })
-  };
+  
 
   useEffect(() => {
     fetch(`http://localhost:5000/myToys/${user.email}`)
@@ -56,6 +20,39 @@ const MyToys = () => {
         setToys(data);
       });
   }, [user]);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        fetch(`http://localhost:5000/toys/${id}`,{
+          method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          if(data.deletedCount>0){
+            Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        const updatedToys = toys.filter(toy => toy._id !== id);
+        setToys(updatedToys)
+          }
+        })
+      }
+    })
+  }
+
   return (
     <div>
       <Card className="h-full w-full">
@@ -129,24 +126,17 @@ const MyToys = () => {
                           {available_quantity}
                         </Typography>
                       </td>
-                      {/* Modal */}
-                      
-                      {/* modal ends */}
+                    
                       <Link to={`/update/${_id}`}><Button className="my-4">
                           <FaEdit variant="text" color="blue-gray"></FaEdit>
                         </Button></Link>
                       
 
-                      {/* <td className={classes}>
-                      <Tooltip content="Edit User">
-                        <Button><FaEdit variant="text" color="blue-gray" >
-                        </FaEdit></Button>
-                      </Tooltip>
-                    </td> */}
+                    
                       <td className={classes}>
-                        {/* <Button className="h-4 w-4">Delete</Button> */}
+                       
                         <Tooltip content="Delete User">
-                          <Button>
+                          <Button onClick={()=> handleDelete(_id)}>
                             <FaTrash variant="text" color="blue-gray"></FaTrash>
                           </Button>
                         </Tooltip>

@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-// import React from "react";
 import {
   Card,
   CardBody,
@@ -45,9 +44,6 @@ const AddToy = () => {
       >
         <CardBody>
           <Tabs>
-            {/* <TabsHeader>
-                <Tab>Add Toy</Tab>
-              </TabsHeader> */}
             <TabPanel value="card" className="p-0">
               <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -90,20 +86,16 @@ const AddToy = () => {
                   <div className="my-4 flex items-center gap-4">
                     <Input
                       label="Price"
-                      maxLength={5}
                       containerProps={{ className: "min-w-[72px]" }}
                       {...register("price")}
                     />
                     <Input
                       label="Available Quantity"
-                      maxLength={4}
                       containerProps={{ className: "min-w-[72px]" }}
                       {...register("available_quantity")}
                     />
                   </div>
                 </div>
-                {/* <Button size="lg">Pay Now</Button> */}
-                {/* <input className="btn" type="submit" value="Submit" /> */}
                 <Button size="lg" type="submit">Submit</Button>
               </form>
             </TabPanel>

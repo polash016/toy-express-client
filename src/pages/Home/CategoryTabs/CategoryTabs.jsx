@@ -5,7 +5,6 @@ import CategoryToy from "./CategoryToy";
 
 const CategoryTabs = () => {
   const [toys, setToys] = useState([]);
-  // const [activeTab, SetActiveTab] = useState('Sports');
 
   useEffect(() => {
     fetch(`http://localhost:5000/toys`)
