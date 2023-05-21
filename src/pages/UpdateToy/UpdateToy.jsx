@@ -15,6 +15,7 @@ const UpdateToy = () => {
   const toy = useLoaderData();
   const { _id, seller_email, picture_url, name, price, available_quantity } =
     toy;
+    console.log(toy)
   const {
     register,
     handleSubmit,

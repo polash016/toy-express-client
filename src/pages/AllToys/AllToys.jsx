@@ -8,6 +8,7 @@ import {
   Button,
 
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const TABLE_HEAD = ["Image","Seller", "Name", "Category", "Price", "Quantity", "Details"];
 
@@ -59,7 +60,7 @@ useEffect(() => {
     </thead>
     <tbody>
       {toys.map(
-        ({ picture_url, seller_name, name, sub_category, price, available_quantity}, index) => {
+        ({_id, picture_url, seller_name, name, sub_category, price, available_quantity}, index) => {
           const isLast = index === toys.length - 1;
           const classes = isLast ? "py-4" : "py-4 border-b border-blue-gray-50";
 
@@ -102,11 +103,8 @@ useEffect(() => {
                 </Typography>
               </td>
               <td className={classes}>
-                    <Button className="">Details</Button>
-                {/* <Tooltip content="Edit User">
-                  <IconButton variant="text" color="blue-gray">
-                  </IconButton>
-                </Tooltip> */}
+                   <Link to={`/toy/${_id}`}> <Button className="">Details</Button></Link>
+               
               </td>
             </tr>
           );
