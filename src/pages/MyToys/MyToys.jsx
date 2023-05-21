@@ -15,14 +15,15 @@ import {
 } from "@material-tailwind/react";
 
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const TABLE_HEAD = ["Image", "Name", "Price", "Rating", "Update", "Delete"];
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
   const { user } = useContext(AuthContext);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen((cur) => !cur);
+  // const [open, setOpen] = useState(false);
+  // const handleOpen = () => setOpen((cur) => !cur);
   const handleUpdate = (e) => {
     e.preventDefault()
     const form = e.target;
@@ -129,70 +130,12 @@ const MyToys = () => {
                         </Typography>
                       </td>
                       {/* Modal */}
-                      <React.Fragment>
-                        {/* <Button onClick={handleOpen}>Sign In</Button> */}
-                        <Button className="my-4" onClick={handleOpen}>
+                      
+                      {/* modal ends */}
+                      <Link to={`/update/${_id}`}><Button className="my-4">
                           <FaEdit variant="text" color="blue-gray"></FaEdit>
-                        </Button>
-                        <Dialog
-                          size="xs"
-                          open={open}
-                          className="bg-transparent shadow-none"
-                        >
-                          <Card className="mx-auto bg-opacity-90 w-full max-w-[24rem]">
-                            <CardHeader
-                              variant="gradient"
-                              color="blue"
-                              className="mb-4 grid h-28 place-items-center"
-                            >
-                              <Typography variant="h3" color="white">
-                                Update
-                              </Typography>
-                            </CardHeader>
-                            <CardBody className="flex flex-col gap-4">
-                              <form onSubmit={handleUpdate} className="flex flex-col gap-4">
-                                <Input
-                                  defaultValue={name}
-                                  name="name"
-                                  label="name"
-                                  size="lg"
-                                />
-                                <Input
-                                  defaultValue={available_quantity}
-                                  name="quantity"
-                                  label="Update Quantity"
-                                  size="lg"
-                                />
-                                <Input
-                                  defaultValue={price}
-                                  name="price"
-                                  label="price"
-                                  size="lg"
-                                />
-                                <Input
-                                  value={_id}
-                                  name="id"
-                                  hidden
-                                />
-                                
-                                <CardFooter className="pt-0 flex justify-between">
-                              <Button
-                                className="bg-danger"
-                                variant="gradient"
-                                onClick={handleOpen}
-                              >
-                                Close
-                              </Button>
-                              <Button type="submit" variant="gradient" >
-                                Update
-                              </Button>
-                            </CardFooter>
-                              </form>
-                            </CardBody>
-                            
-                          </Card>
-                        </Dialog>
-                      </React.Fragment>
+                        </Button></Link>
+                      
 
                       {/* <td className={classes}>
                       <Tooltip content="Edit User">
