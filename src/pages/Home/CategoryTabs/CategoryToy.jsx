@@ -4,13 +4,15 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
-  Rating,
   Typography,
 } from "@material-tailwind/react";
 
 import AOS from 'aos';
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+
+import "@smastrom/react-rating/style.css";
 
 const CategoryToy = ({ category, toys }) => {
   useEffect(() => {
@@ -38,7 +40,11 @@ const CategoryToy = ({ category, toys }) => {
             <span>Price:</span> ${toy.price}
             </Typography>
             <Typography>
-              {toy.rating}
+            <Rating
+      style={{ maxWidth: 100 }}
+      value={toy.rating}
+      readOnly
+    />
             </Typography>
           </CardBody>
           <CardFooter className="pt-0">

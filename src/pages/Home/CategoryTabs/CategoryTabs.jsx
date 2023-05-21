@@ -17,7 +17,7 @@ const CategoryTabs = () => {
   return (
     <div>
       <Tabs>
-        <TabList className="flex justify-between ">
+        <TabList className="flex justify-between mt-8">
           {categories.map((category) => (
             <Tab key={category}>{category}</Tab>
           ))}
