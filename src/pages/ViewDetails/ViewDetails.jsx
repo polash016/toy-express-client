@@ -9,10 +9,11 @@ import { useLoaderData } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
+import useTitle from "../../hooks/useTitle";
 
 const ViewDetails = () => {
   const toy = useLoaderData();
-  console.log(toy);
+  useTitle('Toy Details')
   const {
     picture_url,
     name,

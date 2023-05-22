@@ -10,9 +10,11 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const UpdateToy = () => {
   const toy = useLoaderData();
+  useTitle("Update Toy")
   const { _id, seller_email, picture_url, name, price, available_quantity } =
     toy;
     console.log(toy)

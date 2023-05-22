@@ -9,6 +9,7 @@ import {
 
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const TABLE_HEAD = ["Image","Seller", "Name", "Category", "Price", "Quantity", "Details"];
 
@@ -16,6 +17,7 @@ const AllToys = () => {
 //   const toysData = useLoaderData();
   const [toys, setToys] = useState([])
   const [searchText, setSearchText] = useState('')
+  useTitle('All Toys')
 
 useEffect(() => {
     fetch('https://a11-toy-express-server-polash016.vercel.app/toys')

@@ -1,16 +1,18 @@
 import { useContext } from "react";
-import { FaGoogle, FaGooglePlusG } from "react-icons/fa";
+import { FaGooglePlusG } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import img from "../../../../src/image/login.jpg";
 import img2 from "../../../../src/image/regular1.jpg";
 import { Button, Card, Checkbox, Input, Typography } from "@material-tailwind/react";
+import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
   const { googleLogin, emailLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  useTitle('Login')
 
   const handleGoogleLogin = () => {
     googleLogin()

@@ -9,9 +9,11 @@ import {
     Button,
     Typography,
   } from "@material-tailwind/react";
+import useTitle from "../../../hooks/useTitle";
 
 const Registration = () => {
-    const {registerWithEmail} = useContext(AuthContext)
+    const {registerWithEmail} = useContext(AuthContext);
+    useTitle('Registration')
 
     const handleRegister = (event) => {
         event.preventDefault()

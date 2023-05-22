@@ -5,12 +5,14 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Avatar, Button, Card, CardBody, Tooltip, Typography } from "@material-tailwind/react";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const TABLE_HEAD = ["Image", "Name", "Price", "Rating", "Update", "Delete"];
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
   const { user } = useContext(AuthContext);
+  useTitle('My Toys')
   
 
   useEffect(() => {
