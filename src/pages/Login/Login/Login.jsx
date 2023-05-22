@@ -2,19 +2,24 @@ import { useContext, useState } from "react";
 import { FaGooglePlusG } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
-import img from "../../../../src/image/login.jpg";
 import img2 from "../../../../src/image/regular1.jpg";
-import { Button, Card, Checkbox, Input, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Card,
+  Checkbox,
+  Input,
+  Typography,
+} from "@material-tailwind/react";
 import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
   const { googleLogin, emailLogin } = useContext(AuthContext);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('')
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  useTitle('Login')
+  useTitle("Login");
 
   const handleGoogleLogin = () => {
     googleLogin()
@@ -34,8 +39,8 @@ const Login = () => {
     emailLogin(email, password)
       .then((result) => {
         console.log(result.user);
-        setError('')
-        setSuccess('Login Successfull')
+        setError("");
+        setSuccess("Login Successfull");
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -54,10 +59,7 @@ const Login = () => {
       shadow={false}
     >
       <div className="mx-auto mt-6 h-full">
-        <Typography variant="h4">
-          Login Here
-        </Typography>
-        
+        <Typography variant="h4">Login Here</Typography>
       </div>
       <form
         onSubmit={handleEmailLogin}
@@ -67,8 +69,8 @@ const Login = () => {
           <Input name="email" size="lg" label="Email" />
           <Input name="password" type="password" size="lg" label="Password" />
         </div>
-        <div><span className="text-blue-700">{error}</span></div>
-        <div><span className="text-blue-700">{success}</span></div>
+        <span className="text-blue-700">{error}</span>
+        <span className="text-blue-700">{success}</span>
         <Checkbox
           label={
             <Typography
@@ -87,7 +89,7 @@ const Login = () => {
           }
           containerProps={{ className: "-ml-2.5" }}
         />
-        
+
         <Button type="submit" className="mt-6" fullWidth>
           Login
         </Button>
@@ -103,13 +105,13 @@ const Login = () => {
         <div className="divider ml-40">OR</div>
 
         <div className="w-full ml-40">
-        <button
-          onClick={handleGoogleLogin}
-          className="btn btn-circle btn-outline"
-          title="Login With Google"
-        >
-          <FaGooglePlusG className="w-10 h-8" />
-        </button>
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-circle btn-outline"
+            title="Login With Google"
+          >
+            <FaGooglePlusG className="w-10 h-8" />
+          </button>
         </div>
       </form>
     </Card>

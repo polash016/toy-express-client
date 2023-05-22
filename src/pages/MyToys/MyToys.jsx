@@ -12,16 +12,17 @@ const TABLE_HEAD = ["Image", "Name", "Price", "Rating", "Update", "Delete"];
 const MyToys = () => {
   const [toys, setToys] = useState([]);
   const { user } = useContext(AuthContext);
+  const [sortBy, setSortBy] = useState("asc");
   useTitle('My Toys')
   
 
   useEffect(() => {
-    fetch(`https://a11-toy-express-server-polash016.vercel.app/myToys/${user.email}`)
+    fetch(`https://a11-toy-express-server-polash016.vercel.app/myToys/${user.email}?sort=${sortBy}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
       });
-  }, [user]);
+  }, [user, sortBy]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -53,10 +54,20 @@ const MyToys = () => {
         })
       }
     })
-  }
+  };
+  const handleSortByChange = (event) => {
+    const selectedOption = event.target.value;
+    setSortBy(selectedOption);
+  };
 
   return (
     <div>
+     <div className="p-6">
+     <select className="p-3" value={sortBy} onChange={handleSortByChange}>
+  <option value="asc">Ascending</option>
+  <option value="desc">Descending</option>
+</select>
+     </div>
       <Card className="h-full w-full">
         <CardBody className="px-0">
           <table className="w-full min-w-max table-auto text-left">

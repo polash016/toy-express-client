@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateToy from "../pages/UpdateToy/UpdateToy";
 import ViewDetails from "../pages/ViewDetails/ViewDetails";
 import Error from "../Error/Error";
+import Blogs from "../Blogs/Blogs";
 
   const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ import Error from "../Error/Error";
           path: '/toy/:id',
           element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
           loader: ({params}) => fetch(`https://a11-toy-express-server-polash016.vercel.app/toy/${params.id}`)
+        },
+        {
+          path:'/blogs',
+          element: <Blogs></Blogs>
         }
       ],
     },
