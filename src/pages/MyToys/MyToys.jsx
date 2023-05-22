@@ -14,7 +14,7 @@ const MyToys = () => {
   
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myToys/${user.email}`)
+    fetch(`https://a11-toy-express-server-polash016.vercel.app/myToys/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -33,7 +33,7 @@ const MyToys = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         
-        fetch(`http://localhost:5000/toys/${id}`,{
+        fetch(`https://a11-toy-express-server-polash016.vercel.app/toys/${id}`,{
           method: 'DELETE'
         })
         .then(res => res.json())

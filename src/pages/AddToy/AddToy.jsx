@@ -9,17 +9,19 @@ import {
 } from "@material-tailwind/react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddToy = () => {
     const {user} = useContext(AuthContext)
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    fetch("http://localhost:5000/addToy", {
+    fetch("https://a11-toy-express-server-polash016.vercel.app/addToy", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,6 +31,16 @@ const AddToy = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        if (result.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your Toy is Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        reset()
       });
   };
   return (

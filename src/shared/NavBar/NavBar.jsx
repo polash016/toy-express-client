@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import {
   Navbar,
-  MobileNav,
   Typography,
   Button,
   IconButton,
   Avatar,
+  Collapse,
 } from "@material-tailwind/react";
 import logo from '../../../src/image/logo.png'
 
@@ -161,7 +161,7 @@ const NavBar = () => {
             </IconButton>
           </div>
         </div>
-        <MobileNav open={openNav}>
+        <Collapse open={openNav}>
           {navList}
 
           {user ? (
@@ -178,7 +178,7 @@ const NavBar = () => {
               <span>Login</span>
             </Button>
           )}
-        </MobileNav>
+        </Collapse>
       </Navbar>
     </>
   );

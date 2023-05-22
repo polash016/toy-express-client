@@ -22,7 +22,7 @@ import ViewDetails from "../pages/ViewDetails/ViewDetails";
         {
             path: "/allToys",
             element: <AllToys></AllToys>,
-            loader: () => fetch('http://localhost:5000/toys')
+            loader: () => fetch('https://a11-toy-express-server-polash016.vercel.app/toys')
         },
         {
             path: '/login',
@@ -43,12 +43,12 @@ import ViewDetails from "../pages/ViewDetails/ViewDetails";
         {
           path: '/update/:id',
           element: <UpdateToy></UpdateToy>,
-          loader: ({params})=>fetch(`http://localhost:5000/update/${params.id}`)
+          loader: ({params})=>fetch(`https://a11-toy-express-server-polash016.vercel.app/update/${params.id}`)
         },
         {
           path: '/toy/:id',
-          element: <ViewDetails></ViewDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
+          element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+          loader: ({params}) => fetch(`https://a11-toy-express-server-polash016.vercel.app/toy/${params.id}`)
         }
       ],
     },

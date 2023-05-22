@@ -77,7 +77,7 @@ const MyToys = () => {
     const {user} = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myToys/${user.email}`)
+        fetch(`https://a11-toy-express-server-polash016.vercel.app/myToys/${user.email}`)
         .then(res => res.json())
         .then(data => {
             setToys(data)

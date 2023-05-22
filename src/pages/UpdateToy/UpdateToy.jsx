@@ -19,11 +19,12 @@ const UpdateToy = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    fetch(`http://localhost:5000/update/${_id}`, {
+    fetch(`https://a11-toy-express-server-polash016.vercel.app/update/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -42,6 +43,7 @@ const UpdateToy = () => {
             timer: 1500,
           });
         }
+        reset()
       });
   };
 

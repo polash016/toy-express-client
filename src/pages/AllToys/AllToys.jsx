@@ -18,14 +18,14 @@ const AllToys = () => {
   const [searchText, setSearchText] = useState('')
 
 useEffect(() => {
-    fetch('http://localhost:5000/toys')
+    fetch('https://a11-toy-express-server-polash016.vercel.app/toys')
     .then(res=> res.json())
     .then(data =>setToys(data))
 },[])
 
   const handleSearch = (event) => {
     event.preventDefault()
-    fetch(`http://localhost:5000/toys/${searchText}`)
+    fetch(`https://a11-toy-express-server-polash016.vercel.app/toys/${searchText}`)
     .then(res=> res.json())
     .then(data =>setToys(data))
     event.target.reset()
