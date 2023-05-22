@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import img from "../../../../src/image/new77.jpg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import {
     Card,
@@ -13,6 +13,8 @@ import useTitle from "../../../hooks/useTitle";
 
 const Registration = () => {
     const {registerWithEmail} = useContext(AuthContext);
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
     useTitle('Registration')
 
     const handleRegister = (event) => {
@@ -21,16 +23,23 @@ const Registration = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const photo = form.photo.value
-        console.log(name, email, password,photo)
+        const photo = form.photo.value;
+        if(!password > 6){
+          return
+        }
         registerWithEmail(email, password)
         .then(result => {
             console.log(result.user)
+            setError('')
+            setSuccess('Registration Successfull')
+            
+        form.reset()
         })
         .catch(error => {
+          setSuccess('')
+            setError(error.message)
             console.log(error)
         })
-        form.reset()
     }
   return (
     <div>
@@ -54,6 +63,8 @@ const Registration = () => {
           <Input name="photo" type="text" size="lg" label="Photo URL" />
           <Input name="password" type="password" size="lg" label="Password" />
         </div>
+        <div><span className="text-blue-700">{error}</span></div>
+        <div><span className="text-blue-700">{success}</span></div>
         <Checkbox
           label={
             (
@@ -74,6 +85,7 @@ const Registration = () => {
           }
           containerProps={{ className: "-ml-2.5" }}
         />
+        
         <Button type="submit" className="mt-6" fullWidth>
           Register
         </Button>

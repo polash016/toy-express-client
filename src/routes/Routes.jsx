@@ -9,6 +9,7 @@ import AddToy from "../pages/AddToy/AddToy";
 import PrivateRoute from "./PrivateRoute";
 import UpdateToy from "../pages/UpdateToy/UpdateToy";
 import ViewDetails from "../pages/ViewDetails/ViewDetails";
+import Error from "../Error/Error";
 
   const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ import ViewDetails from "../pages/ViewDetails/ViewDetails";
         }
       ],
     },
+    {
+      path: '*',
+      element: <Error></Error>
+    }
   ]);
 
 export default router;

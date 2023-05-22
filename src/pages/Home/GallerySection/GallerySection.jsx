@@ -1,5 +1,5 @@
-import photo1 from '../../../../src/image/cover2.jpg'
-import photo2 from '../../../../src/image/regular1.jpg'
+import photo1 from '../../../../src/image/login1.jpg'
+import photo2 from '../../../../src/image/login.jpg'
 import photo3 from '../../../../src/image/regular2.jpg'
 import photo4 from '../../../../src/image/regular4.jpg'
 import photo5 from '../../../../src/image/regular6.jpg'
@@ -22,7 +22,7 @@ const GallerySection = () => {
             <img alt="" className="w-full h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src={photo6} />
             <img alt="" className="w-full h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src={photo4} />
             <img alt="" className="w-full h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src={photo8} />
-            <img src={photo7} alt="" className="w-full h-full col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-1 md:row-start-3 dark:bg-gray-500 aspect-square" />
+            <img src={photo7} alt="" className="w-full col-span-2 row-span-2 rounded shadow-sm h-3/4 min-h-96 md:col-start-1 md:row-start-3 dark:bg-gray-500 aspect-square" />
         </div>
     </section> 
     );

@@ -39,11 +39,10 @@ const ExtraSection = () => {
               </svg>
               <span className="relative">The</span>
             </span>{' '}
-            quick, brown fox jumps over a lazy dog
+            Rev up your Sales: Sell Your Toy Cars on our Website Today!
           </h2>
           <p className="text-base text-gray-700 md:text-lg">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque rem aperiam, eaque ipsa quae.
+          Unlock the joy of selling your toy cars effortlessly! Join our online platform and showcase your collection to eager buyers worldwide. 
           </p>
         </div>
         <div className="grid max-w-screen-lg gap-8 row-gap-5 mb-8 sm:grid-cols-2 lg:grid-cols-4 sm:mx-auto">
@@ -70,7 +69,7 @@ const ExtraSection = () => {
         </div>
         <div className="flex items-center sm:justify-center">
           <Button
-            href="/"
+            href="/register"
             className="inline-flex items-center justify-center  px-6 mr-8 font-medium tracking-wide text-white transition duration-200 rounded shadow-md hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
           >
             Sign up

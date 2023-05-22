@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaGooglePlusG } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
@@ -9,6 +9,8 @@ import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
   const { googleLogin, emailLogin } = useContext(AuthContext);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('')
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -32,10 +34,12 @@ const Login = () => {
     emailLogin(email, password)
       .then((result) => {
         console.log(result.user);
+        setError('')
+        setSuccess('Login Successfull')
         navigate(from, { replace: true });
       })
       .catch((err) => {
-        console.log(err);
+        setError(err);
       });
   };
   return (
@@ -63,6 +67,8 @@ const Login = () => {
           <Input name="email" size="lg" label="Email" />
           <Input name="password" type="password" size="lg" label="Password" />
         </div>
+        <div><span className="text-blue-700">{error}</span></div>
+        <div><span className="text-blue-700">{success}</span></div>
         <Checkbox
           label={
             <Typography
@@ -81,6 +87,7 @@ const Login = () => {
           }
           containerProps={{ className: "-ml-2.5" }}
         />
+        
         <Button type="submit" className="mt-6" fullWidth>
           Login
         </Button>
