@@ -24,7 +24,7 @@ const CategoryToy = ({ category, toys }) => {
   const categoryToys = toys.filter((toy) => toy.sub_category === category);
 
   return (
-    <div data-aos="zoom-in" className="grid grid-cols-3 mt-8">
+    <div data-aos="zoom-in" className="grid lg:grid-cols-3 mt-8">
       {categoryToys.map((toy) => (
         <Card key={toy._id} className="mt-6 w-96">
           <CardHeader color="blue-gray" className="relative h-56">

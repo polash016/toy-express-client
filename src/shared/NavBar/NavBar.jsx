@@ -174,9 +174,9 @@ const NavBar = () => {
               <span>Logout</span>
             </Button>
           ) : (
-            <Button variant="gradient" size="sm" className="mb-2">
-              <span>Login</span>
-            </Button>
+            <Link to='/login'><Button variant="gradient" size="sm" className="mb-2">
+            <span>Login</span>
+          </Button></Link>
           )}
         </Collapse>
       </Navbar>
