@@ -47,6 +47,11 @@ const AddToy = () => {
   };
   return (
     <div>
+      <div className="mx-auto text-center md:w-4/12 mt-12">
+      
+        <h3 className="text-5xl text-blue-500 uppercase border-y-4 py-4">Add Toy</h3>
+      
+    </div>
       <Card
         className="w-full max-w-[40%] mx-auto"
         style={{
